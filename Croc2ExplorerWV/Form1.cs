@@ -33,6 +33,12 @@ namespace Croc2ExplorerWV
                 listBox1.Items.Clear();
                 foreach (string file in files)
                     listBox1.Items.Add(file.Substring(basefolder.Length));
+                if (!ADSHelper.Init())
+                {
+                    MessageBox.Show("ADS.DLL not found, please add this file from the gamefolder for sound functions to enable");
+                    exportAsWavToolStripMenuItem.Enabled = false;
+                    button1.Enabled = false;
+                }
             }
         }
 
@@ -202,6 +208,50 @@ namespace Croc2ExplorerWV
                 wad.Resave();
                 LoadWAD();
                 listBox2.SelectedIndex = n;
+            }
+        }
+
+        private void exportAsWavToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ADSHelper.init)
+                    return;
+                SaveFileDialog d = new SaveFileDialog();
+                d.Filter = "*.wav|*.wav";
+                if (d.ShowDialog() == DialogResult.OK)
+                {
+                    MemoryStream m = new MemoryStream();
+                    for (int i = 0; i < hb2.ByteProvider.Length; i++)
+                        m.WriteByte(hb2.ByteProvider.ReadByte(i));
+                    File.WriteAllBytes(d.FileName, ADSHelper.Convert(m.ToArray()));
+                    Log.WriteLine("Saved to " + d.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ADSHelper.init)
+                    return;
+                int n = listBox4.SelectedIndex;
+                if (n == -1)
+                    return;
+                foreach (WADFile.WADSection sec in wad.sections)
+                    if (sec.type == "SMPC")
+                        ADSHelper.Play(ADSHelper.Convert(sec.sounds[n].data));
+                listBox4.SelectedIndex = n;
+                listBox4.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

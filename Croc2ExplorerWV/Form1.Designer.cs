@@ -47,16 +47,18 @@
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.listBox4 = new System.Windows.Forms.ListBox();
             this.hb2 = new Be.Windows.Forms.HexBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.sectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportAsBinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importFromBinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.soundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportAsWavToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rtb1 = new System.Windows.Forms.RichTextBox();
-            this.sectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportAsBinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importFromBinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -309,6 +311,7 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.hb2);
+            this.splitContainer5.Panel2.Controls.Add(this.button1);
             this.splitContainer5.Size = new System.Drawing.Size(670, 277);
             this.splitContainer5.SplitterDistance = 126;
             this.splitContainer5.TabIndex = 1;
@@ -333,15 +336,26 @@
             this.hb2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hb2.Font = new System.Drawing.Font("Courier New", 8.25F);
             this.hb2.LineInfoVisible = true;
-            this.hb2.Location = new System.Drawing.Point(0, 0);
+            this.hb2.Location = new System.Drawing.Point(0, 23);
             this.hb2.Name = "hb2";
             this.hb2.ReadOnly = true;
             this.hb2.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hb2.Size = new System.Drawing.Size(540, 277);
+            this.hb2.Size = new System.Drawing.Size(540, 254);
             this.hb2.StringViewVisible = true;
-            this.hb2.TabIndex = 0;
+            this.hb2.TabIndex = 1;
             this.hb2.UseFixedBytesPerLine = true;
             this.hb2.VScrollBarVisible = true;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(540, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Play";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // menuStrip2
             // 
@@ -354,6 +368,29 @@
             this.menuStrip2.Size = new System.Drawing.Size(684, 24);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
+            // 
+            // sectionToolStripMenuItem
+            // 
+            this.sectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportAsBinToolStripMenuItem,
+            this.importFromBinToolStripMenuItem});
+            this.sectionToolStripMenuItem.Name = "sectionToolStripMenuItem";
+            this.sectionToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.sectionToolStripMenuItem.Text = "Section";
+            // 
+            // exportAsBinToolStripMenuItem
+            // 
+            this.exportAsBinToolStripMenuItem.Name = "exportAsBinToolStripMenuItem";
+            this.exportAsBinToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.exportAsBinToolStripMenuItem.Text = "Export as BIN";
+            this.exportAsBinToolStripMenuItem.Click += new System.EventHandler(this.exportAsBinToolStripMenuItem_Click);
+            // 
+            // importFromBinToolStripMenuItem
+            // 
+            this.importFromBinToolStripMenuItem.Name = "importFromBinToolStripMenuItem";
+            this.importFromBinToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.importFromBinToolStripMenuItem.Text = "Import from BIN";
+            this.importFromBinToolStripMenuItem.Click += new System.EventHandler(this.importFromBinToolStripMenuItem_Click);
             // 
             // textureToolStripMenuItem
             // 
@@ -381,7 +418,8 @@
             // soundToolStripMenuItem
             // 
             this.soundToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripMenuItem1});
+            this.saveToolStripMenuItem1,
+            this.exportAsWavToolStripMenuItem});
             this.soundToolStripMenuItem.Name = "soundToolStripMenuItem";
             this.soundToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.soundToolStripMenuItem.Text = "Sound";
@@ -390,8 +428,15 @@
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
             this.saveToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.saveToolStripMenuItem1.Text = "Export as bin";
+            this.saveToolStripMenuItem1.Text = "Export as BIN";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
+            // 
+            // exportAsWavToolStripMenuItem
+            // 
+            this.exportAsWavToolStripMenuItem.Name = "exportAsWavToolStripMenuItem";
+            this.exportAsWavToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportAsWavToolStripMenuItem.Text = "Export as WAV";
+            this.exportAsWavToolStripMenuItem.Click += new System.EventHandler(this.exportAsWavToolStripMenuItem_Click);
             // 
             // rtb1
             // 
@@ -406,29 +451,6 @@
             this.rtb1.TabIndex = 1;
             this.rtb1.Text = "";
             this.rtb1.WordWrap = false;
-            // 
-            // sectionToolStripMenuItem
-            // 
-            this.sectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportAsBinToolStripMenuItem,
-            this.importFromBinToolStripMenuItem});
-            this.sectionToolStripMenuItem.Name = "sectionToolStripMenuItem";
-            this.sectionToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.sectionToolStripMenuItem.Text = "Section";
-            // 
-            // exportAsBinToolStripMenuItem
-            // 
-            this.exportAsBinToolStripMenuItem.Name = "exportAsBinToolStripMenuItem";
-            this.exportAsBinToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exportAsBinToolStripMenuItem.Text = "Export as BIN";
-            this.exportAsBinToolStripMenuItem.Click += new System.EventHandler(this.exportAsBinToolStripMenuItem_Click);
-            // 
-            // importFromBinToolStripMenuItem
-            // 
-            this.importFromBinToolStripMenuItem.Name = "importFromBinToolStripMenuItem";
-            this.importFromBinToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.importFromBinToolStripMenuItem.Text = "Import from BIN";
-            this.importFromBinToolStripMenuItem.Click += new System.EventHandler(this.importFromBinToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -499,13 +521,15 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.SplitContainer splitContainer5;
         private System.Windows.Forms.ListBox listBox4;
-        private Be.Windows.Forms.HexBox hb2;
         private System.Windows.Forms.ToolStripMenuItem soundToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportAsBinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importFromBinToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportAsWavToolStripMenuItem;
+        private Be.Windows.Forms.HexBox hb2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
